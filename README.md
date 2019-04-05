@@ -95,6 +95,25 @@ val sq : B.t = <abstr>
 - : unit = ()
 ```
 
+```ocaml
+# let box =
+    [| ("days", 365)
+     ; ("months", 12)
+     ; ("years", 1)
+    |]
+    |> Array.map (fun (t, i) -> [| B.text t; B.align_right B.(int i) |])
+    |> B.grid ~pad:(B.hpad 1);;
+val box : B.t = <abstr>
+
+# PrintBox_text.output stdout box;;
+ days   | 365
+--------+-----
+ months |  12
+--------+-----
+ years  |   1
+- : unit = ()
+```
+
 #### frame
 
 Why not put a frame around this? That's easy.
